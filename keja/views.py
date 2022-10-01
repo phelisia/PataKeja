@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from.forms import LoginForm, RegisterForm
+from.forms import CategoryRegistrationForm, LoginForm, RegisterForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
@@ -108,6 +108,76 @@ def logout(request):
 
 #     else:
 #         return render(request, 'index.html')
+
+
+
+
+def agents_view(request):
+    """agent page view."""
+    if request.method == 'POST':
+        form=HouselocationRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=HouselocationRegistrationForm()
+              
+    return render(request, 'agents-grid.html',{'form':form})   
+    
+
+def property_view(request):
+    """property page view."""
+    if request.method == 'POST':
+        form=HouselocationRegistrationForm(request.POST)
+        theform=CategoryRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        if theform.is_valid():
+            theform.save()    
+    else:
+        form=HouselocationRegistrationForm()
+        theform=CategoryRegistrationForm()
+    
+    return render(request, 'property-grid.html',{'form':form,'theform':theform})     
+
+    
+   
+
+        
+                
+    
+
+
+def contacts_view(request):
+    """contact page view."""
+    if request.method == 'POST':
+        form=HouselocationRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=HouselocationRegistrationForm()
+
+    if request.method == 'POST':
+        form=CategoryRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=CategoryRegistrationForm()
+              
+    return render(request, 'contact.html',{'form':form})   
+              
+        
+          
+   
+def keja_view(request):
+    """contact page view."""
+    if request.method == 'POST':
+        form=HouselocationRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=HouselocationRegistrationForm()
+    return render(request, 'property-single.html',{'form':form})   
+
 
 
 
