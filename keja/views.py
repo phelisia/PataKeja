@@ -87,27 +87,27 @@ def logout(request):
 
 
 
-# def searchcategory(request):
-#     if request.method == 'GET':
-#         query= request.GET.get('q')
+def searchcategory(request):
+    if request.method == 'GET':
+        query= request.GET.get('q')
 
-#         submitbutton= request.GET.get('submit')
+        submitbutton= request.GET.get('submit')
 
-#         if query is not None:
-#             lookups= Q(categoryname__icontains=query) | Q(bedroom__icontains=query)
+        if query is not None:
+            lookups= Q(categoryname__icontains=query) | Q(location__icontains=query)
 
-#             results=Category.objects.filter(lookups).distinct()
+            results=Category.objects.filter(lookups).distinct()
 
-#             context={'results': results,
-#                      'submitbutton': submitbutton}
+            context={'results': results,
+                     'submitbutton': submitbutton}
 
-#             return render(request, 'index.html', context)
+            return render(request, 'search.html', context)
 
-#         else:
-#             return render(request, 'index.html')
+        else:
+            return render(request, 'search.html')
 
-#     else:
-#         return render(request, 'index.html')
+    else:
+        return render(request, 'search.html')
 
 
 
@@ -151,17 +151,16 @@ def contacts_view(request):
     """contact page view."""
     if request.method == 'POST':
         form=HouselocationRegistrationForm(request.POST)
+        theform=CategoryRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+
+        if theform.is_valid():
+            theform.save()    
+   
     else:
         form=HouselocationRegistrationForm()
-
-    if request.method == 'POST':
-        form=CategoryRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form=CategoryRegistrationForm()
+        theform=CategoryRegistrationForm()
               
     return render(request, 'contact.html',{'form':form})   
               

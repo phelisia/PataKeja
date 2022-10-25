@@ -9,7 +9,7 @@ class RegisterForm(forms.Form):
     firstname = forms.CharField(label="First name")
     lastname = forms.CharField(label="Last name")
     email = forms.EmailField(label="Email Address")
-    password = password = forms.CharField(label="Password", widget=forms.PasswordInput(render_value=True), min_length=6,max_length=20)
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(render_value=True), min_length=6,max_length=20)
     password_conf = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
     
     def clean(self):
