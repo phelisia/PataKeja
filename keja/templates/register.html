@@ -1,5 +1,4 @@
-{% load static %}
-{% load crispy_forms_tags %}
+{% load static %} {% load crispy_forms_tags %}
 <html>
   <head>
     <meta charset="utf-8" />
@@ -12,24 +11,47 @@
       crossorigin="anonymous"
     ></script>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="{% static '/style.css' %}" />
+    <!-- Favicons -->
+
+    <link href="assets" href="{% static 'assets/img/favicon.png' %}" />
+    <link href="assets" href="{% static 'assets/img/apple-touch-icon' %}" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/vendor/animate.css/animate.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
+    />
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
   </head>
   <body>
     <div class="wrapper">
       <!-- HEADER -->
       <header>
-        <div class="netflixLogo">
-          <a id="logo" href="/"
-            ><img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo7J1jQhh8I2q4tGokD95bmpdq9dJJW4CjgQ&usqp=CAU"
-              alt="Logo Image"
-              width="100px"
-              height="100px"
-          /></a>
+        <div class="p-TabPanel-stackedPaneleja">
+          <a class="navbar-brand text-brand" href="index.html"
+            >Pata<span class="color-b">Keja</span></a
+          >
         </div>
-        <nav class="main-nav">
-          <a href="/">Home</a>
-        </nav>
         <nav class="sub-nav">
           <a href="/login">Login</a>
         </nav>
@@ -37,7 +59,7 @@
       <section class="main-container">
         <div class="location" id="home">
           <div class="box">
-            <form id="registerForm" action="/register" method="POST">
+            <form id="registerForm" method="POST">
               {% csrf_token %} {{ register_form|crispy}}
               <button type="submit">Register</button>
             </form>

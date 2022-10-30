@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <html>
   <head>
     <meta charset="utf-8" />
@@ -17,18 +18,32 @@
     <div class="wrapper">
       <!-- HEADER -->
       <header>
-        <div class="netflixLogo">
-          <a id="logo" href="/"
-            ><img
-              src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true"
-              alt="Logo Image"
-          /></a>
+        <!-- Favicons -->
+
+  <link href="assets" href="{% static 'assets/img/favicon.png' %}"/>
+  <link href="assets" href="{% static 'assets/img/apple-touch-icon' %}"/>
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="{% static 'assets/vendor/animate.css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}">
+
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
         </div>
+        <a class="navbar-brand text-brand" href="index.html">Pata<span class="color-b">Keja</span></a>
         <nav class="main-nav">
-          <a href="/">Home</a>
+          <a href="/home">Home</a>
         </nav>
         <nav class="sub-nav">
-          <a href="/register">Register</a>
+          <a href="/">Register</a>
         </nav>
       </header>
       <section class="main-container">
@@ -37,7 +52,7 @@
             <form id="loginForm" action="/login" method="POST">
               {% csrf_token %} {% if wrong_credentials %}
               <p style="margin-top: 60px">Invalid credentials.</p>
-              {% endif %} {{ login_form.as_p }}
+              {% endif %} {{ login_form|crispy}}
               <button type="submit">Login</button>
             </form>
           </div>

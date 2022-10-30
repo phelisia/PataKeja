@@ -1,10 +1,11 @@
 
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from.forms import CategoryRegistrationForm, LoginForm, RegisterForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,login as dj_login
 from django.contrib.auth import logout as dca_logout
 from django.shortcuts import render
 from django.db.models import Q
@@ -47,7 +48,9 @@ def register(request):
                 username=request.POST.get('email'),
                 password=make_password(request.POST.get('password'))
             )
-            return HttpResponseRedirect('/login')
+            return HttpResponseRedirect(reverse_lazy('login'))
+        else:
+            print(register_form.errors)
         return render(request, 'register.html', locals())
 
 def login(request):
@@ -65,9 +68,9 @@ def login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             # if the credentials are good, we login the user
-            login(request, user)
+            dj_login(request, user)
             # then we redirect him to home page
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/home')
         # if the credentials are wrong, we redirect him to login and let him know
         return render(
             request,
@@ -84,6 +87,7 @@ def logout(request):
    
     # redirect user to home page
     return HttpResponseRedirect('/')
+
 
 
 

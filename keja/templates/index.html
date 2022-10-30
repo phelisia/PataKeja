@@ -101,13 +101,27 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">Pata<span class="color-b">Keja</span></a>
+      <a class="navbar-brand text-brand" href="/home">Pata<span class="color-b">Keja</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
+          <nav class="sub-nav">
+            <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
+            <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
+       
+          </nav>      
+        </header>
+        <li class="nav-item">
+          {% if request.user.is_authenticated %}
+          {{ request.user }}
+          <a href="/logout"><i class="fas fa-power-off sub-nav-logo"></i>Logout</a>
+        {% else %}
+          <a href="/">Register</a><a href="/login">Login</a>
+        {% endif %}    
+        </li>
 
           <li class="nav-item">
-          <a class="nav-link active" href="">Where can I live </a>
+          <a class="nav-link active" href="/home">Where can I live </a>
           </li>
 
           <li class="nav-item">
@@ -120,15 +134,11 @@
 
           <li class="nav-item">
             <a class="nav-link " href="/contact">Contacts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/register">Register </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="/login">Login </a>
-          </li>
+         </li>
+         
+         
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Keja Info</a>
+            <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Keja Info</a>
             <div class="dropdown-menu">
               <a class="dropdown-item " href="/kejainfo">Property Details</a>
               
