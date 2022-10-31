@@ -1,7 +1,7 @@
-
+from django.contrib.gis.db import models  as geomodels
 from django.db import models
 from django.contrib.auth import get_user_model
-from geoposition.fields import GeopositionField
+
 
 
 # Create your models here.
@@ -26,7 +26,7 @@ class Houselocation(models.Model):
     maxprice=models.IntegerField() 
     minprice=models.IntegerField()
     category_name =models.ForeignKey('Category', on_delete=models.CASCADE, related_name ='Houselocation_category')
-    location = GeopositionField()
+    location =geomodels.PointField() 
     
      
     def __str__(self) -> str:

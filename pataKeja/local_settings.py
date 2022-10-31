@@ -3,7 +3,7 @@
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.postgresql',
+        'ENGINE':'django.contrib.gis.db.backends.postgis',
         'NAME': 'kejaproject',
         'USER': 'kejauser',
         'PASSWORD': 'keja',

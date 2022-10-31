@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'keja',
     'geoposition',
     'crispy_forms',
+    'django.contrib.gis',
+    'leaflet',
     
     
     
@@ -151,6 +153,16 @@ try:
 except ImportError:
     pass
 
+
+
+LEAFLET_CONFIG = {
+    "DEFAULT_CENTER": (-1.28333, 36.81667),
+    "DEFAULT_ZOOM": 11,
+    "MAX_ZOOM": 20,
+    "MIN_ZOOM": 3,
+    "SCALE": "both",
+    "ATTRIBUTION_PREFIX": "Patakeja application",
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
